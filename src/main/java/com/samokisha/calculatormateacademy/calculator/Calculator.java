@@ -5,6 +5,10 @@ public class Calculator {
     private String task;
     private String result;
 
+    public void performTask() {
+
+    }
+
     public String getTask() {
         return task;
     }

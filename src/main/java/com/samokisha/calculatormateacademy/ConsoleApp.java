@@ -13,6 +13,7 @@ public class ConsoleApp {
 
         Calculator calculator = new Calculator();
         calculator.setTask(input);
+        calculator.performTask();
         String result = calculator.getResult();
 
         printResult(result);
