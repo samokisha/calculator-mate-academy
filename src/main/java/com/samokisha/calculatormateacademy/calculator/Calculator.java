@@ -4,9 +4,13 @@ public class Calculator {
 
     private String task;
     private String result;
+    private Expression expression;
 
     public void performTask() {
-
+        expression = new Expression();
+        expression.parseExpression(task);
+        expression.performExpression();
+        result = String.valueOf(expression.getResult());
     }
 
     public String getTask() {
