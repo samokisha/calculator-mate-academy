@@ -3,12 +3,15 @@ package com.samokisha.calculatormateacademy.calculator;
 public class Operand {
 
     private Integer value;
+    private NumberType numberType;
 
     public Operand(String value) {
         if (Utils.isInteger(value)) {
             this.value = Integer.parseInt(value);
+            this.numberType = NumberType.ARABIC;
         } else if (Utils.isRomanNumber(value)) {
             this.value = Utils.parseRomanNumber(value);
+            this.numberType = NumberType.ROMAN;
         }
     }
 
@@ -16,7 +19,7 @@ public class Operand {
         return value;
     }
 
-    public void setValue(Integer value) {
-        this.value = value;
+    public NumberType getNumberType() {
+        return numberType;
     }
 }
