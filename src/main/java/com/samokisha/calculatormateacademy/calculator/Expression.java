@@ -24,6 +24,8 @@ public class Expression {
         Operand rightOperand;
         Operation operation;
 
+        expression = expression.replaceAll(" ", "");
+
         if (expression.contains("+")) {
             operation = new PlusOperation();
         } else if (expression.contains("-")) {
