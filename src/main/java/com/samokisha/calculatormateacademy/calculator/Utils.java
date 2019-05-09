@@ -33,6 +33,6 @@ public class Utils {
     }
 
     public static Integer parseRomanNumber(String value) {
-        return ROMAN_NUMS.indexOf(value) + 1;
+        return ROMAN_NUMS.indexOf(value.toUpperCase()) + 1;
     }
 }
