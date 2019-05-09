@@ -26,11 +26,13 @@ public class Expression {
     }
 
     public static Expression parseExpression(String expression) throws Exception {
+        validateStringExpression(expression);
+
+        expression = expression.replaceAll(" ", "");
+
         Operand leftOperand;
         Operand rightOperand;
         Operation operation;
-
-        expression = expression.replaceAll(" ", "");
 
         if (expression.contains("+")) {
             operation = new PlusOperation();
@@ -53,6 +55,12 @@ public class Expression {
         }
 
         return new Expression(operation, leftOperand, rightOperand);
+    }
+
+    private static void validateStringExpression(String expr) throws Exception {
+        if (expr.contains(".") || expr.contains(",")) {
+            throw new Exception("Calculator work only with integers!");
+        }
     }
 
     public void performExpression() {
