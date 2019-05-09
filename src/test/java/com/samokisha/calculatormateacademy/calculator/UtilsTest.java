@@ -19,22 +19,22 @@ public class UtilsTest {
     }
 
     @Test
-    public void getNumberType_forZeroToOneHundredArabic() {
+    public void getNumberType_forZeroToOneHundredArabic() throws Exception {
         for (int i = 0; i < 101; i++) {
             assertEquals(i + " - is arabic number", NumberType.ARABIC, Utils.parseNumberType(String.valueOf(i)));
         }
     }
 
-    @Test
-    public void getNumberType_forZeroToOneHundredArabicWithLetter() {
+    @Test(expected = Exception.class)
+    public void getNumberType_forZeroToOneHundredArabicWithLetter() throws Exception {
         for (int i = 0; i < 101; i++) {
-            assertNull(i + "I - is arabic number", Utils.parseNumberType(i + "I"));
-            assertNull("I" + i + " - is arabic number", Utils.parseNumberType("I" + i));
+            Utils.parseNumberType(i + "I");
+            Utils.parseNumberType("I" + i);
         }
     }
 
     @Test
-    public void getNumberType_forRandomFromMinusOneMillionToOneMillionArabic() {
+    public void getNumberType_forRandomFromMinusOneMillionToOneMillionArabic() throws Exception {
         Random random = new Random();
         int randInt = random.nextInt(2_000_001);
         assertEquals(
@@ -47,11 +47,17 @@ public class UtilsTest {
     @Test
     public void getNumberType_forOneToTenRoman() {
         Stream.of("I", "II", "III", "IV", "V", "VI", "VII", "VIII", "IX", "X")
-                .forEach(i -> assertEquals(i + " - is roman number", NumberType.ROMAN, Utils.parseNumberType(i)));
+                .forEach(i -> {
+                    try {
+                        assertEquals(i + " - is roman number", NumberType.ROMAN, Utils.parseNumberType(i));
+                    } catch (Exception e) {
+                        e.printStackTrace();
+                    }
+                });
     }
 
     @Test
-    public void parseRomanNumber_forOneToTenRoman() {
+    public void parseRomanNumber_forOneToTenRoman() throws Exception {
         List<String> romanNums = Arrays.asList("I", "II", "III", "IV", "V", "VI", "VII", "VIII", "IX", "X");
 
         for (int i = 0; i < romanNums.size(); i++) {
@@ -75,5 +81,12 @@ public class UtilsTest {
         assertEquals("MMXXIII", Utils.arabicToRoman(2023));
         assertEquals("MCLXVIII", Utils.arabicToRoman(1168));
         assertEquals("MMMMCMXXVII", Utils.arabicToRoman(4927));
+    }
+
+    @Test
+    public void arabicToRoman_romanToArabic() throws Exception {
+        for (int i = 1; i <= 5000; i++) {
+            assertEquals("For " + i, i, (int) Utils.parseRomanNumber(Utils.arabicToRoman(i)));
+        }
     }
 }

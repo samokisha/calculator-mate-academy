@@ -5,7 +5,7 @@ public class Operand {
     private Integer value;
     private NumberType numberType;
 
-    public Operand(String value) {
+    public Operand(String value) throws Exception {
         if (Utils.isInteger(value)) {
             this.value = Integer.parseInt(value);
             this.numberType = NumberType.ARABIC;

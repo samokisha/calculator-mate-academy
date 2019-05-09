@@ -16,7 +16,7 @@ public class Utils {
         }
     }
 
-    public static NumberType parseNumberType(String value) {
+    public static NumberType parseNumberType(String value) throws Exception {
         if (isInteger(value)) {
             return NumberType.ARABIC;
         }
@@ -25,15 +25,46 @@ public class Utils {
             return NumberType.ROMAN;
         }
 
-        return null;
+        throw new Exception(value + " is not arabic or roman number");
     }
 
     public static boolean isRomanNumber(String value) {
-        return ROMAN_NUMS.contains(value.toUpperCase());
+        try {
+            parseRomanNumber(value);
+            return true;
+        } catch (Exception e) {
+            return false;
+        }
     }
 
-    public static Integer parseRomanNumber(String value) {
-        return ROMAN_NUMS.indexOf(value.toUpperCase()) + 1;
+    public static Integer parseRomanNumber(String value) throws Exception {
+        String normalizeVal = value.trim().toUpperCase();
+
+        if (normalizeVal.isEmpty()) {
+            return 0;
+        } else if (normalizeVal.startsWith("M")) {
+            return 1000 + parseRomanNumber(normalizeVal.substring(1));
+        } else if (normalizeVal.startsWith("CM")) {
+            return 900 + parseRomanNumber(normalizeVal.substring(2));
+        } else if (normalizeVal.startsWith("D")) {
+            return 500 + parseRomanNumber(normalizeVal.substring(1));
+        } else if (normalizeVal.startsWith("CD")) {
+            return 400 + parseRomanNumber(normalizeVal.substring(2));
+        } else if (normalizeVal.startsWith("C")) {
+            return 100 + parseRomanNumber(normalizeVal.substring(1));
+        } else if (normalizeVal.startsWith("XC")) {
+            return 90 + parseRomanNumber(normalizeVal.substring(2));
+        } else if (normalizeVal.startsWith("L")) {
+            return 50 + parseRomanNumber(normalizeVal.substring(1));
+        } else if (normalizeVal.startsWith("XL")) {
+            return 40 + parseRomanNumber(normalizeVal.substring(2));
+        } else if (normalizeVal.startsWith("X")) {
+            return 10 + parseRomanNumber(normalizeVal.substring(1));
+        } else if (normalizeVal.startsWith("V") || normalizeVal.startsWith("I")) {
+            return ROMAN_NUMS.indexOf(normalizeVal) + 1;
+        } else {
+            throw new Exception("Is not roman number!");
+        }
     }
 
     public static String arabicToRoman(Integer arabic) {
