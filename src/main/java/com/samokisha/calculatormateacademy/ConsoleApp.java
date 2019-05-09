@@ -37,8 +37,8 @@ public class ConsoleApp {
     }
 
     private static void welcomeMessage() {
-        System.out.println("Console calculator\n" +
+        System.out.println("Welcome to Console calculator\n" +
                 "by Anatoly Samokisha\n" +
-                "for Mate Academy");
+                "for Mate Academy\n");
     }
 }
