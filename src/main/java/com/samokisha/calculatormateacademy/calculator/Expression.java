@@ -40,6 +40,10 @@ public class Expression {
         leftOperand = new Operand(operands[0]);
         rightOperand = new Operand(operands[1]);
 
+        if (leftOperand.getNumberType() != rightOperand.getNumberType()) {
+            throw new Exception("Operands type mismatch. It must be the same type.");
+        }
+
         return new Expression(operation, leftOperand, rightOperand);
     }
 
