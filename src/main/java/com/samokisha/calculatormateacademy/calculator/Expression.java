@@ -1,5 +1,7 @@
 package com.samokisha.calculatormateacademy.calculator;
 
+import java.util.regex.Pattern;
+
 public class Expression {
 
     private Operand leftOperand;
@@ -19,7 +21,7 @@ public class Expression {
             operation = new DivideOperation();
         }
 
-        String[] operands = task.split(operation.getSymbol());
+        String[] operands = task.split(Pattern.quote(operation.getSymbol()));
         leftOperand = new Operand(operands[0]);
         rightOperand = new Operand(operands[1]);
     }
