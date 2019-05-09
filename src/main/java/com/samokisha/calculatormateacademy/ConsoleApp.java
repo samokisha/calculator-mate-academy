@@ -13,7 +13,12 @@ public class ConsoleApp {
 
         Calculator calculator = new Calculator();
         calculator.setTask(input);
-        calculator.performTask();
+        try {
+            calculator.performTask();
+        } catch (Exception e) {
+            System.err.println("Runtime exception!\n" + e.getMessage());
+            return;
+        }
         String result = calculator.getResult();
 
         printResult(result);

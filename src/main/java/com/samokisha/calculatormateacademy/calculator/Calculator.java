@@ -6,9 +6,8 @@ public class Calculator {
     private String result;
     private Expression expression;
 
-    public void performTask() {
-        expression = new Expression();
-        expression.parseExpression(task);
+    public void performTask() throws Exception {
+        expression = Expression.parseExpression(task);
         expression.performExpression();
         result = String.valueOf(expression.getResult());
     }
