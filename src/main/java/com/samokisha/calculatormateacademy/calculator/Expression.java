@@ -6,7 +6,7 @@ public class Expression {
     private Operand rightOperand;
     private Operation operation;
 
-    private String result;
+    private Integer result;
 
     public void parseExpression(String task) {
         if (task.contains("+")) {
@@ -28,7 +28,7 @@ public class Expression {
         result = operation.eval(leftOperand, rightOperand);
     }
 
-    public String getResult() {
+    public Integer getResult() {
         return result;
     }
 }
