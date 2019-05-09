@@ -22,12 +22,11 @@ public class ConsoleApp {
             System.err.println("Runtime exception!\n" + e.getMessage());
             return;
         }
-        Integer result = calculator.getResult();
 
-        printResult(result);
+        printResult(calculator.getStringResult());
     }
 
-    private static void printResult(Integer result) {
+    private static void printResult(String result) {
         System.out.println("The result of expression: " + result);
     }
 

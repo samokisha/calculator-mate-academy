@@ -8,6 +8,8 @@ public class Expression {
     private Operand rightOperand;
     private Operation operation;
 
+    private NumberType numberType;
+
     private Integer result;
 
     public Expression() {
@@ -17,6 +19,8 @@ public class Expression {
         this.operation = operation;
         this.leftOperand = leftOperand;
         this.rightOperand = rightOperand;
+
+        this.numberType = leftOperand.getNumberType();
     }
 
     public static Expression parseExpression(String expression) throws Exception {
@@ -55,5 +59,9 @@ public class Expression {
 
     public Integer getResult() {
         return result;
+    }
+
+    public NumberType getNumberType() {
+        return numberType;
     }
 }
