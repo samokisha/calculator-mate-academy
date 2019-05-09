@@ -3,13 +3,13 @@ package com.samokisha.calculatormateacademy.calculator;
 public class Calculator {
 
     private String task;
-    private String result;
+    private Integer result;
     private Expression expression;
 
     public void performTask() throws Exception {
         expression = Expression.parseExpression(task);
         expression.performExpression();
-        result = String.valueOf(expression.getResult());
+        result = expression.getResult();
     }
 
     public String getTask() {
@@ -20,11 +20,7 @@ public class Calculator {
         this.task = task;
     }
 
-    public String getResult() {
+    public Integer getResult() {
         return result;
-    }
-
-    public void setResult(String result) {
-        this.result = result;
     }
 }

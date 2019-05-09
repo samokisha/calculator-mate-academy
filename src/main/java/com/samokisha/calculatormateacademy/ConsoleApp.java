@@ -19,12 +19,12 @@ public class ConsoleApp {
             System.err.println("Runtime exception!\n" + e.getMessage());
             return;
         }
-        String result = calculator.getResult();
+        Integer result = calculator.getResult();
 
         printResult(result);
     }
 
-    private static void printResult(String result) {
+    private static void printResult(Integer result) {
         System.out.println("The result of expression: " + result);
     }
 
