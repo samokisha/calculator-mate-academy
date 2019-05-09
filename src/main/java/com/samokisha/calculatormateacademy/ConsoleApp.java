@@ -15,6 +15,9 @@ public class ConsoleApp {
         calculator.setTask(input);
         try {
             calculator.performTask();
+        } catch (ArithmeticException e) {
+            System.err.println("Can not divided by zero\n" + e.getMessage());
+            return;
         } catch (Exception e) {
             System.err.println("Runtime exception!\n" + e.getMessage());
             return;
