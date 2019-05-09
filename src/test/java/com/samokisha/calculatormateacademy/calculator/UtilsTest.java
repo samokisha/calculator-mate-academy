@@ -61,4 +61,19 @@ public class UtilsTest {
                     number);
         }
     }
+
+    @Test
+    public void arabicToRoman() {
+        assertEquals("MMXIX", Utils.arabicToRoman(2019));
+        assertEquals("MMLXXVI", Utils.arabicToRoman(2076));
+        assertEquals("DXV", Utils.arabicToRoman(515));
+        assertEquals("MMMMDCCXIII", Utils.arabicToRoman(4713));
+        assertEquals("CM", Utils.arabicToRoman(900));
+        assertEquals("MMCDVIII", Utils.arabicToRoman(2408));
+        assertEquals("MMMCCCLXXXII", Utils.arabicToRoman(3382));
+        assertEquals("MDCIX", Utils.arabicToRoman(1609));
+        assertEquals("MMXXIII", Utils.arabicToRoman(2023));
+        assertEquals("MCLXVIII", Utils.arabicToRoman(1168));
+        assertEquals("MMMMCMXXVII", Utils.arabicToRoman(4927));
+    }
 }
