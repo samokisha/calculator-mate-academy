@@ -1,5 +1,7 @@
 package com.samokisha.calculatormateacademy.calculator;
 
+import com.samokisha.calculatormateacademy.calculator.operation.*;
+
 import java.util.regex.Pattern;
 
 public class Expression {

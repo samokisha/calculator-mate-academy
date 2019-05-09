@@ -1,4 +1,6 @@
-package com.samokisha.calculatormateacademy.calculator;
+package com.samokisha.calculatormateacademy.calculator.operation;
+
+import com.samokisha.calculatormateacademy.calculator.Operand;
 
 public class MultiplyOperation implements Operation {
 
