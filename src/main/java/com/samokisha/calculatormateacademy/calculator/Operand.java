@@ -2,17 +2,21 @@ package com.samokisha.calculatormateacademy.calculator;
 
 public class Operand {
 
-    private String value;
+    private Integer value;
 
     public Operand(String value) {
-        this.value = value;
+        if (Utils.isInteger(value)) {
+            this.value = Integer.parseInt(value);
+        } else if (Utils.isRomanNumber(value)) {
+            this.value = Utils.parseRomanNumber(value);
+        }
     }
 
-    public String getValue() {
+    public Integer getValue() {
         return value;
     }
 
-    public void setValue(String value) {
+    public void setValue(Integer value) {
         this.value = value;
     }
 }
